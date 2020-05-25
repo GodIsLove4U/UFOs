@@ -39,61 +39,42 @@
     </div>
     <div class="bg-dark">
         <div class="container-fluid"></div>
-            <div class="row">
-                <div class="col-md-3">
-                    <form class="bg-dark">
-                        <p>Filter Search</p>
-                    </form>
-                </div>
-                <div class="col-md-9">
-                    <ul class="list-group-item bg-dark">
-
-                        <li class="list-group-item bg-dark">  
-                            <label for="date">Date</label>
-                            <input type="text" placeholder="M/D/YYYY" id="datetime"/>
-                        </li>
-
-                        <li class="list-group-item bg-dark">  
-                            <label for="city">City</label>
-                            <input type="text" placeholder="Enter city" id="city"/>
-                        </li>
-
-                        <li class="list-group-item bg-dark">  
-                            <label for="state">State</label>
-                            <input type="text" placeholder="Enter state" id="state"/>
-                        </li>
-
-                        <li class="list-group-item bg-dark">  
-                            <label for="country">Country</label>
-                            <input type="text" placeholder="Enter country" id="country"/>
-                        </li>
-
-                        <li class="list-group-item bg-dark">  
-                            <label for="shape">Shape</label>
-                            <input type="text" placeholder="Enter shape" id="shape"/>
-                        </li>
-
-                        <li class="list-group-item bg-dark">
-                            <button id="filter-btn" type="button" class="btn btn-dark"> Filter Table</button>
-                            <div class="col-md-9">
-                                <table class="table table-striped bg-dark"> 
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>City</th>
-                                            <th>State</th>
-                                            <th>Country</th>
-                                            <th>Shape</th>
-                                            <th>Duration</th>
-                                            <th>Comments</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody></tbody>
-                                </table>
+        <div class="row">
+            <div class="col-md-3">
+                    <div class="bg-dark">
+                    <p>Filter Search</p>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="bg-dark">
+                            <label for="date">Enter Date</label>
+                            <input type="text" placeholder="1/10/2010" id="datetime" />
                             </div>
-                        </li>  
+                        </li>
+                        <li class="list-group-item">
+                            <div class="bg-dark">
+                            <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button> 
+                            </div>
+                        </li>
                     </ul>
-                </div>
+                    </div>
+                </form>
+            </div>
+        
+            <div class="col-md-9">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Country</th>
+                            <th>Shape</th>
+                            <th>Duration</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>                       
         </div>
     </div>    

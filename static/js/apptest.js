@@ -24,37 +24,33 @@ function buildTable(data) {
 }
 
 // Keep track of all filters
-var filters = {};
-// This function will replace your handleClick function
-function updateFilters() {
-    //console.log("Hello World!")
-    //Add filters
-    let date = d3.select("#datetime").property("value");
-    let city = d3.select("#city").property("value");
-    let state = d3.select("#state").property("value");
-    let country = d3.select("#country").property("value");
-    let shape = d3.select("#shape").property("value");
+var filters = {
+    "datetime": d3.select("#datetime").property("value"),
+    "city": d3.select("#city").property("value"),
+    "state": d3.select("#state").property("value"),
+    "country": d3.select("#country").property("value"),
+    "shape": d3.select("#shape").property("value")
+};
+
+for (var key in filters) {
+    if (!filters[key]) {
+        delete filters[key]
+    }
 }
 
-function filterTable() {
-    // Set the filteredData to the tableData
-    let filteredData = tableData;
+var filters = Object.defineProperties(filters);
 
-    // Loop through all of the filters and keep any data that
-    // matches the filter values
-    Object.values(filters).forEach(([key, value]) => {
-        filteredData = filteredData.filter(row => row[key] === value);
-    });
+const filterTable = tableData.filter(item =>
+    filters.every(([key, value]) => item[key] == value)
+);
 
-    // Finally, rebuild the table using the filtered Data
-    buildTable(filteredData);
-}
+buildTable(filteredData);
 
 // Attach an event to listen for changes to each filter
 // Hint: You'll need to select the event and what it is listening for within each set of parenthesis
 
 d3.selectAll('input').on("keydown",updateFilters)
-d3.selectAll("#filter-btn").on("click", updateFilters)
+d3.select("#filter-btn").on("click", updateFilters)
 
 // Build the table when the page loads
 buildTable(tableData);
