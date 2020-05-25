@@ -34,26 +34,56 @@ function updateFilters() {
     let state = d3.select("#state").property("value");
     let country = d3.select("#country").property("value");
     let shape = d3.select("#shape").property("value");
-}
 
-function filterTable() {
-    // Set the filteredData to the tableData
-    let filteredData = tableData;
+    //console.log("test")
 
-    // Loop through all of the filters and keep any data that
-    // matches the filter values
-    Object.values(filters).forEach(([key, value]) => {
-        filteredData = filteredData.filter(row => row[key] === value);
-    });
+    let filteredData = data.filter(d =>{
+        
+        let matched = false
 
-    // Finally, rebuild the table using the filtered Data
+        if (d.datetime == date || date === ''){
+            matched =  true;
+        } else {
+            return false;
+        }
+
+        if (d.city.toUpperCase() === city.toUpperCase() || city === '') {
+            matched =  true;
+        } else {
+            return false;
+        }
+
+        if (d.state.toUpperCase() === state.toUpperCase() || state === '') {
+            matched =  true;
+        } else {
+            return false;
+        }
+
+        if (d.country.toUpperCase() === country.toUpperCase() || country === '') {
+            matched =  true;
+        } else {
+            return false;
+        }
+
+        if (d.shape.toUpperCase() === shape.toUpperCase() || shape === '') {
+            matched =  true;
+        } else {
+            return false;
+        }
+        
+
+        return matched
+
+    } )
     buildTable(filteredData);
+    
+    //console.log(filteredData)
 }
 
 // Attach an event to listen for changes to each filter
 // Hint: You'll need to select the event and what it is listening for within each set of parenthesis
 
-d3.selectAll('input').on("keydown",updateFilters)
+//d3.selectAll('input').on("keydown",updateFilters)
 d3.selectAll("#filter-btn").on("click", updateFilters)
 
 // Build the table when the page loads
